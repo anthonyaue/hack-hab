@@ -219,7 +219,7 @@
 // #define DEBUG_MODEM  // Modem ISR overrun and profiling
 // #define DEBUG_AFSK   // AFSK (modulation) output
  #define DEBUG_RESET  // AVR reset
-// #define DEBUG_SENS   // Sensors
+ #define DEBUG_SENS   // Sensors
 
 
 #endif

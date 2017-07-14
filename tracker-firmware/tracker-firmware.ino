@@ -79,14 +79,6 @@ void setup()
   sensors_setup();
   Serial.println("Done with setup");
 
-#ifdef DEBUG_SENS
-  Serial.print("Ti=");
-  Serial.print(sensors_int_lm60());
-  Serial.print(", Te=");
-  Serial.print(sensors_ext_lm60());
-  Serial.print(", Vin=");
-  Serial.println(sensors_vin());
-#endif
 
   Serial.println("Setting up next_aprs");
   // Do not start until we get a valid time reference
@@ -148,10 +140,21 @@ void get_pos()
 
 void loop()
 {
+  
   if(millis() % 10000 == 0)
   {
-    Serial.println("Millis: ");
     Serial.print(millis());
+    Serial.println(" ms elapsed");
+    
+ #ifdef DEBUG_SENS
+    Serial.print("Ti=");
+    Serial.print(sensors_int_lm60());
+    Serial.print(", Te=");
+    Serial.print(sensors_ext_lm60());
+    Serial.print(", Vin=");
+    Serial.println(sensors_vin());
+ #endif
+
   }
   // Time for another APRS frame
   if ((int32_t) (millis() - next_aprs) >= 0) {
